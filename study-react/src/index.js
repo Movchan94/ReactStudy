@@ -1,16 +1,23 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import './index.css';
-import App from './App';
 import * as serviceWorker from './serviceWorker';
+import {addPost, store, subscribe, updateNewPostText} from './store'
+import ReactDOM from "react-dom";
+import App from "./App";
 
-ReactDOM.render(<App />, document.getElementById('root'));
 
-const state = ['Hello', 'Hello world!']
+ let rerenderEntireTree =()=> {
 
-export let addPost = (postMessage)=>{
-    state.push('Hello new POST')
+    ReactDOM.render(<App
+        state = {store.getState()}
+        dispatch = {store.dispatch.bind(store)}
+        updateNewPostText = {store.updateNewPostText.bind(store)} />, document.getElementById('root'));
 }
+rerenderEntireTree(store.getState())
+
+store.subscribe(rerenderEntireTree)
+
+
 // If you want your app to work offline and load faster, you can change
 // unregister() to register() below. Note this comes with some pitfalls.
 // Learn more about service workers: https://bit.ly/CRA-PWA

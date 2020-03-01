@@ -1,23 +1,16 @@
 import React from 'react';
 import './App.css';
+import MyPost from "./MyPost";
 
 
-
-
-
-function App() {
-
-  let newPostElement = React.createRef()
-  let addNewPost =()=>{
-    let text = newPostElement.current.value
-  console.log(text)
-}
-
+const App =(props)=> {
 
   return (
     <div className="App">
-  <textarea ref = {newPostElement}>gfgfg</textarea>
-      <button onClick={addNewPost} placeholder= 'ldfld'></button>
+     <MyPost
+         state = {props.state}
+         dispatch = {props.dispatch}
+       />
     </div>
   );
 }
