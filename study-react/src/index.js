@@ -11,7 +11,7 @@ import App from "./App";
     ReactDOM.render(<App
         state = {store.getState()}
         dispatch = {store.dispatch.bind(store)}
-        updateNewPostText = {store.updateNewPostText.bind(store)} />, document.getElementById('root'));
+    />, document.getElementById('root'));
 }
 rerenderEntireTree(store.getState())
 

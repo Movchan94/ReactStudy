@@ -1,5 +1,7 @@
 import React from 'react';
 import Post from "./Post";
+import {addPostAC, updateNewPostTextAC} from './Reducers'
+
 
 
 const MyPost =(props)=> {
@@ -8,13 +10,12 @@ const MyPost =(props)=> {
  let newPostText = React.createRef()
 
  let addPost =()=>{
- // props.addPost()
-     props.dispatch({type:'ADD-POST'})
+     props.dispatch(addPostAC())
  }
  let onPostChange =()=>{
      let text = newPostText.current.value;
-    // props.updateNewPostText(text)
-     props.dispatch({type:'UPDATE-NEW-POST-TEXT'})
+     let action = updateNewPostTextAC(text)
+     props.dispatch(action)
      console.log(text)
  }
  return (
