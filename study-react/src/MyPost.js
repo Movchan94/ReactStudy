@@ -1,30 +1,29 @@
 import React from 'react';
 import Post from "./Post";
-import {addPostAC, updateNewPostTextAC} from './Reducers'
 
 
 
-const MyPost =(props)=> {
- let postElements =  props.state.posts.map(m => <Post message = {m.message}/>)
+const MyPost = (props) => {
 
- let newPostText = React.createRef()
+    let postElements = props.posts.map(m => <Post message={m.message}/>)
 
- let addPost =()=>{
-     props.dispatch(addPostAC())
- }
- let onPostChange =()=>{
-     let text = newPostText.current.value;
-     let action = updateNewPostTextAC(text)
-     props.dispatch(action)
-     console.log(text)
- }
- return (
-     <div>
-      <textarea onChange={onPostChange} value = {props.state.newPostText} ref = {newPostText} />
-      <button onClick={addPost}>Отправить</button>
-      {postElements}
-     </div>
- )
+    let newPostText = React.createRef()
+
+    let onAddPost = () => {
+        props.addPost()
+        newPostText.current.value = ''
+    }
+    let onPostChange = () => {
+        let text = newPostText.current.value;
+        props.postChange(text)
+    }
+    return (
+        <div>
+            <textarea onChange={onPostChange} value={props.newPostText} ref={newPostText}/>
+            <button onClick={onAddPost}>Отправить</button>
+            {postElements}
+        </div>
+    )
 
 }
 export default MyPost;

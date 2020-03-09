@@ -1,32 +1,36 @@
-import { ProfileReducer } from "./Reducers"
+import profileReducer from "./Reducers"
 
 export let store = {
-    _state:  {
-        posts:[
-            {message:'Hello'},
-            {message:'Hello world'},
-            {message:'Hello lalala'},
+    _state: {
+        profile: {
+            posts: [
+                {message: 'Hello'},
+                {message: 'Hello world'},
+                {message: 'Hello lalala'},
 
-        ],
-        newPostText : 'vxdvbd'
+            ],
+            newPostText: 'vxdvbd'
+        },
+        sidebar: {}
+
     },
-    _callSubscriber(){
+    _callSubscriber() {
         console.log('state changed')
     },
 
-    getState(){
+    getState() {
         return this._state
     },
-    subscribe (observer) {
+    subscribe(observer) {
         this._callSubscriber = observer
     },
-    dispatch(action){
-        this._state =  ProfileReducer(this._state, action)
+    dispatch(action) {
+        this._state.profile = profileReducer(this._state.profile, action)
         this._callSubscriber(this._state)
     }
 }
 
-
+export default store
 window.store = store;
 
 

@@ -1,15 +1,13 @@
 import React from 'react';
 import './App.css';
-import MyPost from "./MyPost";
+import MyPostContainer from "./MyPostContainer";
 
 
-const App =(props)=> {
+const App =()=> {
 
   return (
     <div className="App">
-     <MyPost
-         state = {props.state}
-         dispatch = {props.dispatch}
+     <MyPostContainer
        />
     </div>
   );
