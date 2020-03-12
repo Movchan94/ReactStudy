@@ -22,23 +22,43 @@ let initialState = {
 const usersReducer = (state = initialState, action) => {
 
     switch (action.type) {
-        case 'SET-USERS': {
-            return {
-                ...state,
-                users: [...state.users],
-            }
+    case 'FOLLOW': {
+        return {
+            ...state,
+            users:state.users.map(u=> 
+                {
+                    if (u.id === action.userID ){
+                        return {...u, followed:true }
+                    }
+                    return u;
+                })
+            
         }
+    }
+    case 'UNFOLLOW': {
+        return {
+            ...state,
+            users:state.users.map(u=> 
+                {
+                    if (u.id === action.userID ){
+                        return {...u, followed:false }
+                    }
+                    return u;
+                })
+            
+        }
+    }
         default:
             return state;
     }
 }
 
-export const followAC = () => {
-    return {type: 'FOLLOW'}
+export const followAC = (userID) => {
+    return {type: 'FOLLOW', userID}
 }
 
-export const unfollowAC = () => {
-    return {type: 'UNFOLLOW'}
+export const unfollowAC = (userID) => {
+    return {type: 'UNFOLLOW', userID}
 }
 
 export default usersReducer
