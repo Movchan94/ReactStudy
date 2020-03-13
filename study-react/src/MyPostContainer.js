@@ -1,4 +1,4 @@
-import React from 'react';
+
 import MyPost from "./MyPost";
 import {addPostAC, updateNewPostTextAC} from "./Reducers";
 import {connect} from "react-redux";

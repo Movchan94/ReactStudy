@@ -1,20 +1,6 @@
 let initialState = {
     users: [
-        {id: '0',
-        firstname:'Vasya',
-        lastname: 'Pupkin',
-        followed:true
-     },
-        {id: '1',
-        firstname:'Lena',
-        lastname: 'Lalala',
-        followed:false
-    },
-        {id: '2',
-        firstname:'Sasha',
-        lastname: 'Movchan',
-        followed:true
-     } 
+       
     ],
 }
 
@@ -48,6 +34,13 @@ const usersReducer = (state = initialState, action) => {
             
         }
     }
+    case 'SET_USERS': {
+        return {
+            ...state,
+            users:[...state.users, ...action.users]
+            
+        }
+    } 
         default:
             return state;
     }
@@ -59,6 +52,10 @@ export const followAC = (userID) => {
 
 export const unfollowAC = (userID) => {
     return {type: 'UNFOLLOW', userID}
+}
+
+export const setUsersAC = (users) => {
+    return {type: 'SET_USERS', users}
 }
 
 export default usersReducer
