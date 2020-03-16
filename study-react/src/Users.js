@@ -1,31 +1,27 @@
 import React from 'react';
-
+import * as axios from 'axios'
+import avaUSER from './../src/avaUSER.jpg'
 
 
 const Users =(props)=> {
+      
    if (props.users.length ===0){
-    props.setUsers([
-      {id: '0',
-      firstname:'Vasya',
-      lastname: 'Pupkin',
-      followed:false
-   },
-      {id: '1',
-      firstname:'Lena',
-      lastname: 'Lalala',
-      followed:false
-  },
-      {id: '2',
-      firstname:'Sasha',
-      lastname: 'Movchan',
-      followed:true
-   } 
-     ])
+    axios.get('https://social-network.samuraijs.com/api/1.0/users').then(response => {
+      props.setUsers(response.data.items)
+    })
    }
 
   return <div>
     {
       props.users.map(u => <div key ={u.id}>
+    <span>
+        <div>
+        <img src = {u.photos.small !=null ? u.photos.small : avaUSER} />
+        </div>
+        <div>
+        {u.name} 
+        </div>
+        </span>
         <span>
           <div>
             {u.followed 
@@ -33,15 +29,9 @@ const Users =(props)=> {
             : <button onClick = {()=> {props.follow(u.id)}}>Follow</button>}
           </div>
         </span>
-        <span>
-        <div>
-          {u.firstname} 
-          {u.lastname}
-        </div>
-        </span>
+    
       </div>
         )
-     
     }
   </div>
 }
