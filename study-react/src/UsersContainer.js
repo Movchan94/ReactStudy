@@ -4,9 +4,11 @@ import Users from './Users'
 import {followAC,unfollowAC,setUsersAC} from './UsersReducer'
 
 let mapStateToProps = (state) => {
-    
     return {
         users: state.usersPage.users,
+        pageSize:state.usersPage.pageSize,
+        totalCount:state.usersPage.totalCount,
+        currentPage:state.usersPage.currentPage
     }
 }
 let mapDispatchToProps = (dispatch) => {

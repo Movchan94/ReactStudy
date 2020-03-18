@@ -1,10 +1,9 @@
 let initialState = {
-    users: [
-       
-    ],
+    users:[],
+    pageSize:10,
+    totalCount: 100,
+    currentPage:1
 }
-
-
 const usersReducer = (state = initialState, action) => {
 
     switch (action.type) {
