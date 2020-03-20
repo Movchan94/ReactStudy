@@ -1,15 +1,15 @@
 import React from 'react';
 import './App.css';
-import MyPostContainer from "./MyPostContainer";
+import MyPostContainer from "./Post/MyPostContainer";
 import {Route} from 'react-router-dom'
-import UsersContainer from './UsersContainer';
+import UsersContainer from './Users/UsersContainer';
 import Navbar from './Navbar'
 
 const App =()=> {
 
   return (
     <div className="App">
-     
+
       <Navbar/>
 
       <Route exact path="/posts">
@@ -19,8 +19,8 @@ const App =()=> {
       <Route exact path="/users">
         <UsersContainer/>
       </Route>
-     
-     
+
+
     </div>
   );
 }

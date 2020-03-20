@@ -1,4 +1,4 @@
-import profileReducer from "./Reducers"
+import profileReducer from "./Reducers/Reducers"
 
 export let store = {
     _state: {

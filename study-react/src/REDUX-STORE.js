@@ -1,7 +1,7 @@
 
 import {combineReducers, createStore} from "redux";
-import profileReducer from "./Reducers";
-import usersReducer from './UsersReducer'
+import profileReducer from "./Reducers/Reducers";
+import usersReducer from './Reducers/UsersReducer'
 
 
 
